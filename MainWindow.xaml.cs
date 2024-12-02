@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace SerilogWPFExample
@@ -15,12 +16,15 @@ namespace SerilogWPFExample
         {
             // Log-Nachricht erstellen
             Log.Information("Der Button wurde geklickt!");
-
-            // Log-Level Beispiel
             Log.Debug("Debug-Nachricht: Button wurde geklickt.");
             Log.Warning("Warnung: Button wurde geklickt.");
             Log.Error("Fehler: Etwas ist schiefgelaufen.");
             Log.Fatal("Fataler Fehler: Anwendung könnte abstürzen.");
+
+            // Live konsolen ausgabe
+            Debug.WriteLine("Test_Live_Konsolenausgabe");
+            
         }
+
     }
 }

@@ -1,6 +1,13 @@
-﻿using Serilog;
+﻿/*
+Zusätzliche Hinweise:
+Live-Ansicht in der Konsole: Durch die Konfiguration WriteTo.Console() und das regelmäßige Flush wird jede Log-Nachricht in der Konsole sofort angezeigt, während die Anwendung läuft.
+Serilog in der Konsole: In der Konsole selbst siehst du dann die Log-Nachrichten live, ohne auf die Datei warten zu müssen. 
+ */
+
+using Serilog;
 using System;
 using System.Windows;
+
 
 namespace SerilogWPFExample
 {
@@ -13,17 +20,13 @@ namespace SerilogWPFExample
                 .WriteTo.Console()
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day) // Log-Datei wird täglich rotiert
                 .CreateLogger();
+            
 
             // Beispiel-Log-Nachricht, um Serilog zu testen
             Log.Information("Anwendung gestartet.");
-
+            Log.Information("Logs werden live in der Konsole angezeigt!");
         }
 
-        protected override void OnExit(ExitEventArgs e)
-        {
-            Log.CloseAndFlush(); // Logger beim Beenden freigeben
-            base.OnExit(e);
-        }
-
+        
     }
 }
